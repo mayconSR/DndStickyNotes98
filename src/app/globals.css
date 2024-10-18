@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: 'ms-sans-serif';
+  src: url('./fonts/ms-sans-serif-98.ttf');
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+*{
+  font-family: "ms-sans-serif", system-ui;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
