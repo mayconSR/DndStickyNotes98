@@ -1,7 +1,6 @@
 'use client';
 import { useState } from "react";
 import { Note } from "./components/Note";
-import { FaPlus } from "react-icons/fa";
 import { TfiClose } from "react-icons/tfi";
 
 
@@ -28,14 +27,14 @@ export default function Home() {
       id: notes.length + 1,
       title: title,
       content: content,
-      left: 0,
-      top: 0,
+      left: 100,
+      top: 100,
     };
     setNotes((prevNotes) => [...prevNotes, newNote]);
     // Limpar os campos após adicionar a nota
     setNoteTitle("");
     setNoteContent("");
-    toggleModal(); // Fecha o modal após salvar
+    toggleModal();
   }
 
   const handleDeleteNotes = (id) => {
@@ -43,13 +42,19 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div className="bg-teal-600">
       {isModalOpen && (
         <div className="absolute z-50 w-screen h-screen bg-gray-700/60 flex justify-center items-center">
           <div className="flex flex-col justify-start gap-1 w-[250px] h-fit p-1 bg-gray-300 border-t-2 border-l-2 border-gray-100 shadow-btng">
             <div className="flex justify-between items-center p-1 w-full bg-gradient-to-r from-blue-800 to-blue-300 cursor-grab select-none"><h2 className="text-white font-bold">Nova Nota</h2><button onClick={toggleModal} className="p-1 bg-gray-300 border-t-2 border-l-2 border-gray-200 shadow-btn">
               <TfiClose />
             </button></div>
+            <div className="flex gap-2">
+              <p className="text-sm after:content-[''] after:w-2 after:h-[1px] after:block after:bg-gray-800 after:mt-[-2px] cursor-pointer">File</p>
+              <p className="text-sm after:content-[''] after:w-2 after:h-[1px] after:block after:bg-gray-800 after:mt-[-2px] cursor-pointer">Edit</p>
+              <p className="text-sm after:content-[''] after:w-2 after:h-[1px] after:block after:bg-gray-800 after:mt-[-2px] cursor-pointer">Search</p>
+              <p className="text-sm after:content-[''] after:w-2 after:h-[1px] after:block after:bg-gray-800 after:mt-[-2px] cursor-pointer">Help</p>
+            </div>
             <input
               id="noteTitle"
               type="text"
@@ -76,9 +81,7 @@ export default function Home() {
         </div>
       )}
       <div style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
-        <button className="p-1 bg-gray-300 border-t-2 border-l-2 text-xs border-gray-200 shadow-btn absolute right-2 top-2" onClick={toggleModal}>
-          <FaPlus />
-        </button>
+        <img src='assets/pad.png' alt="Adicione uma nota" title="Adicione uma nota" className="cursor-pointer absolute top-4 left-4" onClick={toggleModal}/>
         <div id="board" className="relative">
           {notes.map(note => (
             <Note
@@ -94,6 +97,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }

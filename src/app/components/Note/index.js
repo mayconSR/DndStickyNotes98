@@ -67,7 +67,13 @@ export function Note({ id, title, content, left, top, onDragEnd, onDelete }) {
           </button>
         </div>
       </div>
-      <div className="p-1 w-full bg-white border-t-2 border-l-2 border-gray-400 shadow-btnw flex-grow">
+      <div className="flex gap-2">
+              <p className="text-sm after:content-[''] after:w-2 after:h-[1px] after:block after:bg-gray-800 after:mt-[-2px] cursor-pointer">File</p>
+              <p className="text-sm after:content-[''] after:w-2 after:h-[1px] after:block after:bg-gray-800 after:mt-[-2px] cursor-pointer">Edit</p>
+              <p className="text-sm after:content-[''] after:w-2 after:h-[1px] after:block after:bg-gray-800 after:mt-[-2px] cursor-pointer">Search</p>
+              <p className="text-sm after:content-[''] after:w-2 after:h-[1px] after:block after:bg-gray-800 after:mt-[-2px] cursor-pointer">Help</p>
+            </div>
+      <div className="p-1 w-full bg-white border-t-2 border-l-2 border-gray-400 shadow-btnw flex-grow relative">
         <p>{content}</p>
       </div>
     </div>
